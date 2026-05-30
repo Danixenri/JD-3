@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Amor - Nuestro Universo</title>
+    <style>
+        /* ==========================================================================
+           ESTILOS (CSS)
+           ========================================================================== */
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Fondo negro profundo por si tarda en cargar la imagen */
+            color: white;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden; /* Evita que aparezcan barras de navegación */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #universo {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            
+            /* CAMBIO AQUÍ: Imagen de fondo con filtro oscuro para que resalten las estrellas */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('FondoG.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Contenedor del texto principal */
+        .mensaje {
+            z-index: 10;
+            padding: 20px;
+            max-width: 600px;
+            animation: aparecerSuave 2s ease-out;
+        }
+
+        /* Efecto neón rosa para el título */
+        h1 {
+            color: #ff0055;
+            font-size: 2.8em;
+            font-weight: 300;
+            margin-bottom: 20px;
+            text-shadow: 
+                0 0 5px #ff0055,
+                0 0 10px #ff0055,
+                0 0 20px #ff0055,
+                0 0 40px #ff0055;
+        }
+
+        .mensaje p {
+            font-size: 1.1em;
+            color: #e0e0e0;
+            margin: 12px 0;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Estilo del botón interactivo */
+        .boton {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 35px;
+            border: 2px solid #ff0055;
+            border-radius: 30px;
+            color: #ff0055;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            z-index: 10;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
+            cursor: pointer;
+        }
+
+        .boton:hover {
+            background-color: #ff0055;
+            color: white;
+            box-shadow: 0 0 25px #ff0055, 0 0 50px rgba(255, 0, 85, 0.6);
+            transform: scale(1.05);
+        }
+
+        /* Capa para los elementos flotantes del fondo */
+        #fondo-animado {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none; /* Permite hacer clic a través de ellos */
+        }
+
+        /* Estrellas pequeñas */
+        .estrella {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0;
+            animation: moverElementos linear infinite;
+        }
+
+        /* Textos flotantes con brillo azul/morado */
+        .texto-flotante {
+            position: absolute;
+            color: #00bfff;
+            font-size: 0.85em;
+            font-weight: bold;
+            white-space: nowrap;
+            opacity: 0;
+            animation: moverElementos linear infinite;
+            text-shadow: 0 0 5px #00bfff, 0 0 15px rgba(0, 191, 255, 0.6);
+        }
+
+        /* Animación para hacer flotar los elementos hacia arriba */
+        @keyframes moverElementos {
+            0% {
+                transform: translateY(105vh) scale(0.5);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.8;
+            }
+            85% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-5vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Animación de entrada para el texto principal */
+        @keyframes aparecerSuave {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="universo">
+        <div id="fondo-animado"></div>
+        
+        <div class="mensaje">
+            <h1>💞 Buenos días amor 💞 </h1>
+            <p>Despertar y saber que existes es mi parte favorita del día.🫶🏽🥰😍 </p>
+            <p>Creé este pequeño espacio solo para ti y recuerdes lo mucho que te amo❤️ .</p>
+           
+            <a href="#" class="boton" onclick="reproducirMusica(); alert('💌❤️ ¡Te amo infinitamente Jessica!❤️💌  No hay estrellas suficientes para demostrate lo que siento por ti💖🥺 '); return false;">
+                TE DIRE ALGO
+            </a>
+        </div>
+    </div>
+   
+    <audio id="miMusica" src="locos1.mp3" loop></audio>
+  
+    <script>
+        // Lista de frases románticas que flotarán en el fondo
+        const frases = [
+            "Te amo", "Mi reina", "Eres todo", "Siempre a tu lado",
+            "Mi paz", "Nuestro destino", "Mi mayor alegría",
+            "Cada segundo", "Te pienso", "Mi refugio", "Mi vida entera",
+            "Mi universo", "Mi sueño hecho realidad", "Me encantas",
+            "Mi chispa", "Para siempre", "Mi mundo a color","Preciosa",
+            "Mi niña", "Mi razón de ser", "Mi luz" , "Mi corazón", "Siempre juntos",
+            "Lo que siempre soñe", "Jessica y Daniel", "Mi lugar seguro", "Mi futura esposa",
+            "Mi Mujer","Mi hogar", "Unica", "Hermosa", "Mi amor", "Mi cielo", "Mi mundo",
+            "Me fascinas", "Me enloqueces", "Me vuelves loco", "Te extraño", "Te quiero",
+            "Amo tus besos", "Amo tu mirada", "Amo estar contigo", "Soy tuyo", "Princesa",
+            "Besame"
+        ];
+
+        const contenedor = document.getElementById('fondo-animado');
+
+        function generarUniverso() {
+            // 1. Crear estrellas de fondo
+            const cantidadEstrellas = 80;
+            for (let i = 0; i < cantidadEstrellas; i++) {
+                const estrella = document.createElement('div');
+                estrella.className = 'estrella';
+                
+                // Distribución horizontal aleatoria
+                estrella.style.left = `${Math.random() * 100}vw`;
+                
+                // Tamaños aleatorios pequeños
+                const tamano = Math.random() * 3 + 1;
+                estrella.style.width = `${tamano}px`;
+                estrella.style.height = `${tamano}px`;
+                
+                // Tiempos y retrasos aleatorios para que no salgan todas al mismo tiempo
+                estrella.style.animationDuration = `${Math.random() * 8 + 4}s`;
+                estrella.style.animationDelay = `${Math.random() * 6}s`;
+                
+                contenedor.appendChild(estrella);
+            }
+
+            // 2. Crear las palabras flotantes
+            frases.forEach((frase) => {
+                const texto = document.createElement('div');
+                texto.className = 'texto-flotante';
+                texto.innerText = frase;
+                
+                // Distribución horizontal aleatoria
+                texto.style.left = `${Math.random() * 85}vw`; 
+                
+                // Duración de animación más lenta para las palabras para que se puedan leer bien
+                texto.style.animationDuration = `${Math.random() * 12 + 8}s`;
+                texto.style.animationDelay = `${Math.random() * 10}s`;
+                
+                // Colores ligeramente variados entre azul y rosa para dar dinamismo
+                if (Math.random() > 0.5) {
+                    texto.style.color = '#ff00aa';
+                    texto.style.textShadow = '0 0 5px #ff00aa, 0 0 15px rgba(255, 0, 170, 0.6)';
+                }
+                
+                contenedor.appendChild(texto);
+            });
+        }
+
+        // Función encargada de darle play a locos1.mp3
+        function reproducirMusica() {
+            const musica = document.getElementById('miMusica');
+            musica.play().catch(error => {
+                console.log("Error al reproducir el audio:", error);
+            });
+        }
+
+        // Arrancar la animación de inmediato al cargar la pantalla
+        generarUniverso();
+    </script>
+</body>
+</html>
